@@ -91,7 +91,8 @@ def sample_entries():
         # are told apart by their full path.
         label = name if names.count(name) == 1 else rel
         base = url_path(rel)
-        prefix = f"../data/{base}/" if base else "../data/"
+        # Root-relative, not "../data/": the Studio proxy answers 403 to any URL with "../" in it.
+        prefix = f"/data/{base}/" if base else "/data/"
         query = "&".join("src=" + quote(prefix + quote(b), safe="/.:~-_%") for b in bundles)
         size = 0
         for b in bundles:
