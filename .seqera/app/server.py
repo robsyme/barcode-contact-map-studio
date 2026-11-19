@@ -30,7 +30,9 @@ DATA_ROOT = Path(os.environ.get("BCM_DATA_ROOT", "/workspace/data"))
 MAX_DEPTH = int(os.environ.get("BCM_SCAN_DEPTH", "6"))
 MAX_DIRS = int(os.environ.get("BCM_SCAN_MAX_DIRS", "5000"))
 SCAN_TTL = float(os.environ.get("BCM_SCAN_TTL", "30"))
-SKIP_DIRS = {"work", ".git", ".nextflow", "node_modules", "__pycache__"}
+SKIP_DIRS = {"work", ".git", ".nextflow", "node_modules", "__pycache__"} | {
+    d.strip() for d in os.environ.get("BCM_SKIP_DIRS", "").split(",") if d.strip()
+}
 REPORT_NAMES = {"multiqc_report.html"}
 
 _cache = {"at": 0.0, "value": None}

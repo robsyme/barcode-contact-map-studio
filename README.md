@@ -30,6 +30,7 @@ Environment variables, all optional:
 | `BCM_DATA_ROOT` | `/workspace/data` | Folder to scan for bundles |
 | `BCM_SCAN_DEPTH` | `6` | How many folder levels to scan |
 | `BCM_SCAN_MAX_DIRS` | `5000` | Stop scanning after this many folders |
+| `BCM_SKIP_DIRS` | none | Comma-separated folder names to leave out of the scan, besides `work` |
 | `BCM_SCAN_TTL` | `30` | Seconds to cache the scan |
 
 A running Studio sees new files in the mount only if `FUSION_REFRESH_TIMEOUT` was set when it was created, so start it after the pipeline has finished.
